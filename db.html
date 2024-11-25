@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hierarchy Quotes Dashboard</title>
+  <style>
+    /* Insert your provided CSS here */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Jost', sans-serif;
+      background: rgba(33, 72, 109, 0.8); /* Slight transparency */
+    }
+    
+    .hero-section {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: rgba(31, 92, 150, 0.8); /* Slight transparency */
+      backdrop-filter: blur(10px); /* Apply blur effect */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 4px;
+      border-radius: 40px;
+      transition: backdrop-filter 0.3s ease, background 0.3s ease;
+    }
+    
+    h1{
+        color: rgb(255, 255, 255);
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .header .logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .dashboard-container {
+      margin: 80px auto; /* Add spacing for fixed header */
+      padding: 20px;
+      max-width: 90%;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: rgba(31, 92, 150, 0.8);
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(200, 230, 250, 0.5);
+    }
+
+    tr:hover {
+      background-color: rgba(31, 92, 150, 0.2);
+    }
+
+    .cta-button {
+      margin-top: 20px;
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-size: 1em;
+      border-radius: 50px; /* Pill-shaped */
+      transition: background-color 0.3s, color 0.3s;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      background-color: white;
+      color: rgba(3, 53, 100, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="logo">
+        <img src="images/logo.png" alt="Logo">
+    </div>
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <a href="#" class="dropdown-btn">Pricing</a>
+            <div class="dropdown-content">
+                <a href="websites.html">Websites</a>
+                <a href="graphics.html">Graphics</a>
+            </div>
+        </div>
+        <a href="quote.html">Get Quote</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+  <h1>Hierarchy Quotes Dashboard</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Service</th>
+        <th>Country Code</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Currency</th>
+        <th>Message</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody id="data-table">
+      <!-- Data will be inserted here dynamically -->
+    </tbody>
+  </table>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDH80UMeSwoWtjsd1rGp-zI2hP3E8IP4hk",
+      authDomain: "quote-a21d3.firebaseapp.com",
+      projectId: "quote-a21d3",
+      storageBucket: "quote-a21d3.appspot.com",
+      messagingSenderId: "118114512498",
+      appId: "1:118114512498:web:dc8763d6c29d3504575ceb"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // Initialize Firestore
+    const db = getFirestore(app);
+
+    // Fetch data from Firestore
+    async function fetchData() {
+      const tableBody = document.getElementById("data-table");
+      const querySnapshot = await getDocs(collection(db, "quotes"));
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+
+        // Create table rows dynamically
+        const row = `
+          <tr>
+            <td>${data.name}</td>
+            <td>${data.company}</td>
+            <td>${data.service}</td>
+            <td>${data.countryCode}</td>
+            <td>${data.phone}</td>
+            <td>${data.email}</td>
+            <td>${data.currency}</td>
+            <td>${data.message}</td>
+            <td>${new Date(data.timestamp?.seconds * 1000).toLocaleString()}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    fetchData().catch((error) => console.error("Error fetching data: ", error));
+  </script>
+      <script>
+        function toggleMenu() {
+          const menu = document.getElementById('menu');
+          menu.classList.toggle('open');
+        }
+      </script>
+</body>
+</html>
