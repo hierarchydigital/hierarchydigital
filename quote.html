@@ -38,20 +38,20 @@
         color: #ffffff;
         font-weight: bold;
     }
-    input[type="text"], input[type="email"], select, textarea, button {
+    input[type="text"],[type="number"], input[type="email"], select, textarea, button {
         width: 100%;
         padding: 12px;
         border: 1px solid #ffffff;
-        border-radius: 5px;
-        background-color: #232323;
-        color: #f0f0f0;
+        border-radius: 20px;
+        background-color: #ffffff;
+        color: rgba(8, 60, 109, 0.8);
         transition: border-color 0.3s, background-color 0.3s, color 0.3s;
-        font-family: 'Roboto', sans-serif;
     }
+
     input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus, button:focus {
         outline: none;
         border-color: #ffffff;
-        background-color: #333333;
+        background-color: #ffffff;
     }
     .select-container {
         display: grid;
@@ -64,11 +64,11 @@
     }
     .file-label {
         display: block;
-        background-color:  rgba(51, 127, 199, 0.8);;
+        background-color:  rgba(8, 60, 109, 0.8);
         color: #fff;
         text-align: center;
         padding: 12px;
-        border-radius: 5px;
+        border-radius: 20px;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
@@ -98,7 +98,7 @@
         </nav>
     </header>
 <div class="container">
-    <h2>Request a Quote</h2>
+    <h2>REQUEST A QUOTE</h2>
     <form action="mailto:hierarchydigital@gmail.com" method="post" enctype="text/plain">
         <label for="name">Name & Surname</label>
         <input type="text" id="name" name="name" required>
@@ -109,9 +109,10 @@
         <label for="service">Service Needed</label>
         <select id="service" name="service" required>
             <option value="" disabled selected>Select a service</option>
-            <option value="Web Design">Web Design</option>
-            <option value="Digital Marketing">Digital Marketing</option>
-            <option value="SEO">SEO</option>
+            <option value="Web Design">Website</option>
+            <option value="Digital Marketing">Poster</option>
+            <option value="SEO">Logo</option>
+            <option value="SEO">Other</option>
             <!-- Add more services based on www.hierarchydigital.site -->
         </select>
         
@@ -333,10 +334,10 @@
         <option value="ZWL">ZWL (Zimbabwean Dollar)</option>
                 <!-- Add more currencies as needed -->
             </select>
-            <input type="number" id="amount" name="amount" placeholder="Budget" min="0" step="100" required>
+            <input type="number" id="amount" name="amount" placeholder="Budget Amount" min="0" step="100" required>
         </div>
         
-        <textarea id="message" name="message" placeholder="Additional Information" rows="4"></textarea>
+        <textarea id="message" name="message" placeholder="Message" rows="4"></textarea>
         
         <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.png" class="file-input">
         <label for="attachment" class="file-label">Attach Files (optional)</label>
