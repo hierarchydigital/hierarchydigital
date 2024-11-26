@@ -465,7 +465,14 @@
 .graphic-card h3 {
 color: #ffffff;
 }
-
+.carousel-container h2 {
+  text-align: center; /* Center text */
+  align-items: center; /* Center horizontally */
+  justify-content: center;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
 .ctaa-button{
   background-color: transparent;
   color: #fff;
@@ -480,3 +487,4 @@ color: #ffffff;
   margin-bottom: 40px;
   margin-left: 30%;
 }
+
