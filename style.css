@@ -7,8 +7,9 @@
   
   body {
     font-family: 'Jost', sans-serif;
-    background: rgba(31, 92, 150, 0.8); /* Slight transparency */
-  }
+    background: linear-gradient(to bottom right, rgba(31, 92, 150, 0.8), rgba(13, 37, 78, 0.8)); /* Gradient from top-left to bottom-right */
+    background-attachment: fixed; /* Ensures the gradient stays in place when scrolling */
+}
   
   .hero-section {
     position: relative;
@@ -21,7 +22,8 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
-}
+    text-align: left;
+    }
 
 /* Adjust header to allow blur effect */
 .header {
@@ -124,6 +126,11 @@
     .header .cta {
       display: none;
     }
+    .header .logo img {
+      height: 50px;
+      width: auto;
+      margin-left: -20px;
+    }
   }
 
   .her-section {
@@ -163,16 +170,18 @@
     z-index: 1;
     max-width: 90%; /* Adjusted max-width for responsiveness */
     padding: 20px;
-    margin-top: 50px;
+    margin-top: -90px;
 }
 .hero-content h1 {
     font-size: 2.5em; /* Adjusted font size for smaller screens */
     margin-bottom: 20px;
     font-weight: 700;
+    text-align: left;
 }
 .hero-content p {
     font-size: 1.5em; /* Adjusted font size for smaller screens */
     margin-bottom: 30px;
+    text-align: left;
 }
 .cta-button {
     background-color: transparent;
@@ -185,6 +194,7 @@
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
     display: inline-block;
+    text-align: right;
 }
 .cta-button:hover {
     background-color: white;
@@ -275,8 +285,9 @@
   font-size: 10px; /* Adjust base font size */
   font-weight: 900; /* Use boldest Roboto font */
   line-height: 1; /* Decreased line height */
-  padding: 50px;
-  margin-top: -150px;
+  padding: 40px;
+  margin-top: -70px;
+  margin-bottom: 50px;
 }
 
 .text-gradient p {
@@ -364,4 +375,91 @@
   width: 100%;
   font-size: 0.9rem;
   margin-top: 20px;
+}
+.graphic-work {
+  margin: 2rem 0; /* Add margin for spacing */
+  font-size: 1.3rem;
+}
+
+.graphic-grid {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive columns */
+  gap: 1rem; /* Space between cards */
+  margin-top: -30px;
+  padding: 25px;
+  margin-bottom: 100px;
+  
+}
+
+.graphic-card {
+  background: rgba(255, 255, 255, 0.1); /* Background color */
+  border-radius: 20px; /* Rounded corners */
+  padding: 1rem; /* Padding around the card */
+  padding-top: 0.1rem;
+  padding-bottom: 4rem;
+  text-align: center; /* Center text */
+  align-items: center; /* Center horizontally */
+  justify-content: center;
+  height: 92%;
+}
+
+.graphic-work h2 {
+  border-radius: 10px; /* Rounded corners */
+  padding: 2.5rem; /* Padding around the card */
+  text-align: center; /* Center text */
+  align-items: center; /* Center horizontally */
+  justify-content: center;
+  margin-top: -270px;
+  color: #fff;
+  font-size: 3rem;
+}
+
+.graphics-card {
+  background: rgba(255, 255, 255, 0.1); /* Background color */
+  border-radius: 10px; /* Rounded corners */
+  padding: 1rem; /* Padding around the card */
+  padding-top: 1rem;
+  margin-bottom: 150px;
+  margin-top: -150px;
+  text-align: center; /* Center text */
+  align-items: center; /* Center horizontally */
+  justify-content: center;
+}
+
+.graphicc-card {
+  background: rgba(255, 255, 255, 0.1); /* Background color */
+  border-radius: 10px; /* Rounded corners */
+  padding: 1rem; /* Padding around the card */
+  padding-top: 1rem;
+  margin-bottom: 150px;
+  margin-top: 3px;
+  text-align: center; /* Center text */
+  align-items: center; /* Center horizontally */
+  justify-content: center;
+}
+.graphic-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  
+}
+
+.graphics-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin-top: 20px;
+  
+}
+.graphic-description {
+  margin-top: 0.rem; /* Space between image and text */
+  color: #fff; /* Text color */
+}
+.graphics-description {
+  margin-top: 5rem; /* Space between image and text */
+  color: #fff; /* Text color */
+}
+
+.graphic-card h3 {
+color: #ffffff;
 }

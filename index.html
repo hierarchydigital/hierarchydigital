@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="images\logo.png">
-  <meta name="google-site-verification" content="e3wDJ3sB5f_u4Iq_bBjO8wwMYI0qB2GKxZx6oyEeXlE" />
 </head>
 <style>
     .selection-container {
@@ -15,7 +14,7 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
-        max-width: 90%; /* Adjust max-width as needed */
+        max-width: 100%; /* Adjust max-width as needed */
         margin: auto;
         margin-bottom: 100px;
     }
@@ -25,6 +24,8 @@
         flex-wrap: wrap;
         gap: 15px;
         justify-content: center;
+        padding: 5px;
+        width: 100%;
     }
 
     .small-box {
@@ -98,6 +99,8 @@
         font-weight: bold;
         color: #333;
     }
+
+
 
     .large-box p {
         font-size: 14px; /* Adjust font size for smaller screens */
@@ -197,6 +200,8 @@
         font-size: 0.9rem;
         margin-top: 20px;
     }
+
+
 </style>
 <body>
     <header class="header">
@@ -226,10 +231,32 @@
           <a href="quote.html" class="cta-button">Request Quote</a>
       </div>
   </div>
-  
+  <section class="graphic-work">
+    <h2>Services</h2>
+    <div class="graphic-grid">
+        <!-- Graphic Work Cards -->
+        <div class="graphic-card">
+            <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/500/external-branding-marketing-agency-flaticons-lineal-color-flat-icons-3.png" alt="Graphic Work 1" class="graphic-logo"> <!-- Update with actual graphic path -->
+            <h3>Branding</h3>
+            <a href="graphics.html">View Projects​</a>
+        </div>
+        <div class="graphic-card">
+            <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/500/external-website-seo-flaticons-lineal-color-flat-icons.png" alt="Graphic Work 2" class="graphic-logo"> <!-- Update with actual graphic path -->
+            <h3>Websites</h3>
+            <a href="graphics.html">View Projects​</a>
+        </div>
+        <div class="graphic-card">
+            <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/500/external-graphic-design-social-media-agency-flaticons-lineal-color-flat-icons-6.png" alt="Graphic Work 3" class="graphic-logo"> <!-- Update with actual graphic path -->
+            <h3>Graphic Design</h3>
+            <a href="graphics.html">View Projects​</a>
+        </div>
+        <!-- Add more graphic works as needed -->
+    </div>
+</section>
 <div class="text-gradient">
     <p>Hierarchy Digital offers exceptional visual communication solutions and dynamic web design services that elevate brands and enhance user experiences.</p>
 </div>
+
 <div class="selection-container">
     <div class="small-boxes">
         <div class="small-box" onclick="showDetails('branding')">Branding</div>
@@ -240,21 +267,18 @@
         <div class="large-box-content">
             <h3>Branding</h3>
             <p>We create strong brand identities that resonate with your audience and set you apart from the competition.</p>
- 
         </div>
     </div>
     <div id="logo-design" class="large-box">
         <div class="large-box-content">
             <h3>Logo Design</h3>
             <p>Our logo designs are unique and memorable, tailored to your brand's identity and values.</p>
-
         </div>
     </div>
     <div id="poster-design" class="large-box">
         <div class="large-box-content">
             <h3>Poster Design</h3>
             <p>We design eye-catching posters that effectively communicate your message and captivate your audience.</p>
-
         </div>
     </div>
 </div>
