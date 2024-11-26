@@ -23,6 +23,7 @@
     background-size: cover;
     background-position: center;
     text-align: left;
+    margin-top: 50px;
     }
 
 /* Adjust header to allow blur effect */
@@ -410,7 +411,7 @@
   text-align: center; /* Center text */
   align-items: center; /* Center horizontally */
   justify-content: center;
-  margin-top: -270px;
+  margin-top: -220px;
   color: #fff;
   font-size: 3rem;
 }
