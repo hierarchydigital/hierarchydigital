@@ -8,8 +8,196 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="images\logo.png">
 </head>
+<style>
+    .selection-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 90%; /* Adjust max-width as needed */
+        margin: auto;
+        margin-bottom: 100px;
+    }
+
+    .small-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .small-box {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(145deg, #1A1A1A, #333);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        position: relative;
+        text-align: center;
+        font-size: 14px; /* Adjust font size for smaller screens */
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .small-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(145deg, #333, #1A1A1A);
+    }
+
+    .small-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 12px;
+    }
+
+    .small-box:hover::before {
+        opacity: 1;
+    }
+
+    .large-box {
+        display: none;
+        width: 90%; /* Adjust width for smaller screens */
+        max-width: 100%; /* Maximum width for larger screens */
+        height: auto; /* Adjust height based on content */
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px; /* Rounded corners */
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        animation: fadeIn 0.5s ease-in-out;
+        background: linear-gradient(145deg, #1A1A1A, #333);
+    }
+
+    .large-box-content {
+        width: 100%;
+    }
+
+    .large-box h3 {
+        margin-bottom: 10px;
+        font-size: 18px; /* Adjust font size for smaller screens */
+        font-weight: bold;
+        color: #333;
+    }
+
+    .large-box p {
+        font-size: 14px; /* Adjust font size for smaller screens */
+        line-height: 1.5;
+        color: #666;
+    }
+
+
+
+    /* Specific gradients for large boxes */
+    #branding {
+        background: linear-gradient(145deg, #FFFFFF, #578bb6);
+    }
+
+    #logo-design {
+        background: linear-gradient(145deg, #FFFFFF, #4682B4);
+    }
+
+    #poster-design {
+        background: linear-gradient(145deg, #FFFFFF, #4682B4);
+    }
+
+    @media (max-width: 768px) {
+        .small-box {
+            width: calc(33.33% - 20px); /* Adjust width for smaller screens */
+        }
+        .large-box {
+            width: 90vw; /* Adjust width for smaller screens */
+            max-width: none; /* Remove maximum width for smaller screens */
+        }
+    }
+    .footer {
+        background-color: #1A1A1A;
+        color: white;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .footer-section {
+        flex: 1 1 250px;
+        margin-bottom: 20px;
+    }
+
+    .footer-section h5 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 8px;
+    }
+
+    .footer-section a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: #6BAFFF;
+    }
+
+    .footer-logo {
+        width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .footer-social {
+        margin-top: 20px;
+    }
+
+    .footer-social a {
+        display: inline-block;
+        margin-right: 10px;
+        color: white;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-social a:hover {
+        color: #6BAFFF;
+    }
+
+    .footer-legal {
+        text-align: center;
+        width: 100%;
+        font-size: 0.9rem;
+        margin-top: 20px;
+    }
+</style>
 <body>
-    <div id="particles-js"></div>
     <header class="header">
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
         <div class="logo">
@@ -22,6 +210,7 @@
                 <div class="dropdown-content">
                     <a href="websites.html">Websites</a>
                     <a href="graphics.html">Graphics</a>
+                    <a href="branding.html">Branding</a>
                 </div>
             </div>
             <a href="quote.html">Get Quote</a>
@@ -36,6 +225,65 @@
           <a href="quote.html" class="cta-button">Request Quote</a>
       </div>
   </div>
+  
+<div class="text-gradient">
+    <p>Hierarchy Digital offers exceptional visual communication solutions and dynamic web design services that elevate brands and enhance user experiences.</p>
+</div>
+<div class="selection-container">
+    <div class="small-boxes">
+        <div class="small-box" onclick="showDetails('branding')">Branding</div>
+        <div class="small-box" onclick="showDetails('logo-design')">Logo Design</div>
+        <div class="small-box" onclick="showDetails('poster-design')">Poster Design</div>
+    </div>
+    <div id="branding" class="large-box">
+        <div class="large-box-content">
+            <h3>Branding</h3>
+            <p>We create strong brand identities that resonate with your audience and set you apart from the competition.</p>
+ 
+        </div>
+    </div>
+    <div id="logo-design" class="large-box">
+        <div class="large-box-content">
+            <h3>Logo Design</h3>
+            <p>Our logo designs are unique and memorable, tailored to your brand's identity and values.</p>
+
+        </div>
+    </div>
+    <div id="poster-design" class="large-box">
+        <div class="large-box-content">
+            <h3>Poster Design</h3>
+            <p>We design eye-catching posters that effectively communicate your message and captivate your audience.</p>
+
+        </div>
+    </div>
+</div>
+<footer class="footer">
+  
+    <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+            <li><a href="websites.html">Web Design</a></li>
+            <li><a href="graphics.html">Graphic Design</a></li>
+            <li><a href="branding.html">Branding</a></li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Contact Us</h3>
+        <ul>
+            <li>Email: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+            <li>Careers: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+        
+        </ul>
+    </div>
+  
+    <div class="footer-section">
+        <h3>Privacy Policy</h3>
+        <p>Your privacy is important to us. Read our <a href="privacypolicy.html">Privacy Policy</a>.</p>
+  
+        <h4>Terms of Service</h4>
+        <p>By using our services, you agree to our <a href="termsofservice.html">Terms of Service</a>.</p>
+    </div>
+</footer>
   <script>
     function toggleMenu() {
       const menu = document.getElementById('menu');
@@ -49,6 +297,16 @@
             dropdownContent.style.display === 'block' ? 'none' : 'block';
     });
 });
+</script>
+<script>
+    function showDetails(id) {
+        // Hide all large boxes
+        document.querySelectorAll('.large-box').forEach(box => {
+            box.style.display = 'none';
+        });
+        // Show the selected large box
+        document.getElementById(id).style.display = 'flex';
+    }
 </script>
 </body>
 </html>
