@@ -285,19 +285,28 @@
         font-size: 1.5rem;
     }
 
-    .graphic-image{
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        margin-top: 20px;
-        border-radius: 15px;
-    }
+    .graphic-image {
+    width: 100%; /* Make the image fill its container's width */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 10px; /* Add slight rounding to corners, if desired */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    max-height: 160px; /* Adjust max-height to define the rectangle's height */
+    margin-top: 12px;
+}
+
 
     .graphic-content a{
         text-decoration: none;
         color: #174396;
         font-size: 1.2rem;
     }
+    .graphic-iframe {
+    width: 100%; /* Makes the iframe span the full width of the card */
+    height: 200px; /* Adjust height for the desired preview size */
+    border: none; /* Removes iframe borders */
+    border-radius: 20px;
+    margin-top: 10px;
+}
 </style>
 <body>
     <header class="header">
@@ -325,83 +334,67 @@
           <h1>Websites</h1>
         </div>
         <div class="graphic-grid">
-            <p>Explore our catalogue of event poster designs , designed to elevate your brand.</p>
+            <p>Explore our UX/UI Projects, let us help your business stand out from the rest.</p>
         </div>
         
         <div class="graphic-grid">
-          <!-- Project 1 -->
-          <div class="graphic-card">
-            <img src="images/rfs.jpg" alt="Branding Project" class="graphic-image">
-            <div class="graphic-content">
-                <h3>Event Poster</h3>
-                <p>Event poster for the 2024 Riverfront sessions event.</p>
-              <a href="quote.html">Enquire</a>
+            <!-- Project 1 -->
+            <div class="graphic-card">
+                <a href="https://hierarchydigital.github.io/lethabomohaladi/" target="_blank">
+                    <img src="images/alpha-site.png" alt="Summer Invasion Website" class="graphic-image">
+                </a>
+                <div class="graphic-content">
+                    <h3>Website</h3>
+                    <p>Modern code editor website.</p>
+                    <a href="https://hierarchydigital.github.io/lethabomohaladi/index.html">View Site</a>
+                </div>
             </div>
-          </div>
-          <!-- Project 2 -->
-          <div class="graphic-card">
-            <img src="images/nirv.png" alt="Poster Design" class="graphic-image">
-            <div class="graphic-content">
-                <h3>Event Poster</h3>
-                <p>Oasis Events Nirvana After Party poster.</p>
-              <a href="quote.html">Enquire</a>
+            
+            <!-- Project 2 -->
+            <div class="graphic-card">
+                <a href="https://hierarchydigital.github.io/lethabomohaladi/index.html" target="_blank">
+                    <img src="images/lethabo-site.png" alt="Summer Invasion Website" class="graphic-image">
+                </a>
+                <div class="graphic-content">
+                    <h3>Website</h3>
+                    <p>Portfolio website for a Web designer.</p>
+                    <a href="https://hierarchydigital.github.io/lethabomohaladi/index.html">View Site</a>
+                </div>
             </div>
-          </div>
-          <!-- Project 3 -->
-          <div class="graphic-card">
-            <img src="images/si23.png" alt="Logo Design" class="graphic-image">
-            <div class="graphic-content">
-                <h3>Event Poster</h3>
-                <p>Event poster for the 2023 Oasis Summer Invasion.</p>
-              <a href="quote.html">Enquire</a>
+            <!-- Project 3 -->
+            <div class="graphic-card">
+                <a href="https://sites.google.com/view/oasisevents/home" target="_blank">
+                    <img src="images/oasis-site.png" alt="Summer Invasion Website" class="graphic-image">
+                </a>
+                <div class="graphic-content">
+                    <h3>Website</h3>
+                    <p>Website for an Events company</p>
+                    <a href="https://sites.google.com/view/oasisevents/home">View Site</a>
+                </div>
             </div>
-          </div>
             <!-- Project 4 -->
-          <div class="graphic-card">
-            <img src="images/ut.png" alt="Logo Design" class="graphic-image">
-            <div class="graphic-content">
-                <h3>Event Poster</h3>
-                <p>Oasis Events Utopia Fest 2024 Poster</p>
-              <a href="quote.html">Enquire</a>
+            <div class="graphic-card">
+                <a href="https://hierarchydigital.github.io/Quiz-Brawl/index.html" target="_blank">
+                    <img src="images/quiz-site.png" alt="Summer Invasion Website" class="graphic-image">
+                </a>
+                <div class="graphic-content">
+                    <h3>Website</h3>
+                    <p>Website for an Educational Quiz site</p>
+                    <a href="https://hierarchydigital.github.io/Quiz-Brawl/index.html">View Site</a>
+                </div>
             </div>
-          </div>
             <!-- Project 5 -->
-          <div class="graphic-card">
-            <img src="images/wp23.jpg" alt="Logo Design" class="graphic-image">
-            <div class="graphic-content">
-                <h3>Event Poster</h3>
-                <p>Oasis Winter Party 2023 Announcement Poster.</p>
-              <a href="quote.html">Enquire</a>
+            <div class="graphic-card">
+                <a href="https://hierarchydigital.github.io/FinLume/index.html" target="_blank">
+                    <img src="images/fin-site.png" alt="Summer Invasion Website" class="graphic-image">
+                </a>
+                <div class="graphic-content">
+                    <h3>Website</h3>
+                    <p>Financial Services Site.</p>
+                    <a href="https://hierarchydigital.github.io/FinLume/index.html">View Site</a>
+                </div>
             </div>
-          </div>
-            <!-- Project 5.1 -->
-            <div class="graphic-card">
-                <img src="images/riv.png" alt="Logo Design" class="graphic-image">
-                <div class="graphic-content">
-                    <h3>Event Poster</h3>
-                    <p>Riverside High 2024 Funday poster.</p>
-                  <a href="quote.html">Enquire</a>
-                </div>
-              </div>
-            <!-- Project 6 -->
-            <div class="graphic-card">
-                <img src="images/sui.jpg" alt="Logo Design" class="graphic-image">
-                <div class="graphic-content">
-                    <h3>Event Poster</h3>
-                    <p>Hoerskool Suiderlig Valentine's day poster.</p>
-                  <a href="quote.html">Enquire</a>
-                </div>
-              </div>
-            <!-- Project 7 -->
-            <div class="graphic-card">
-                <img src="images/don.jpg" alt="Logo Design" class="graphic-image">
-                <div class="graphic-content">
-                    <h3>Event Poster</h3>
-                    <p>Easter Donation drive initiative for Suncrest High School 2024.</p>
-                  <a href="quote.html">Enquire</a>
-                </div>
-              </div>
-        </div>
+        
       </section>
       <footer class="footer">
         <div class="footer-section">
