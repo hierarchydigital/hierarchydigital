@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRICING | HIERARCHY DIGITAL</title>
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images\logo.png">
+<style>
+    .container {
+        max-width: 100%;
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 90px;
+        color: #fff;
+    }
+
+    .toggle-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .toggle-buttons input[type="radio"] {
+        display: none;
+    }
+
+    .toggle-buttons label {
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 20px;
+        background-color: rgba(31, 92, 150, 0.8);;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .toggle-buttons label:hover {
+        background-color: rgba(31, 92, 150, 0.8);;
+        transform: scale(1.05);
+    }
+
+    .toggle-buttons input[type="radio"]:checked + label {
+        background-color: rgba(19, 56, 90, 0.8);;
+        transform: scale(1.05);
+    }
+
+    .pricing-section {
+        display: none;
+        margin-bottom: 40px;
+    }
+
+    .pricing-section.active {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .pricing-box {
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 100%;
+        margin: 20px;
+        padding: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .pricing-box:hover {
+        transform: scale(1.05);
+    }
+
+    .pricing-box h3 {
+        margin-top: 0;
+        color: rgba(31, 92, 150, 0.8);;
+        font-size: 1.5rem;
+    }
+
+    .pricing-box p {
+        margin: 10px 0;
+    }
+
+    .pricing-box ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .pricing-box ul li {
+        margin: 10px 0;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .pricing-box ul li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: rgba(31, 92, 150, 0.8);
+    }
+</style>
+<body>
+    <header class="header">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <nav id="menu">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-btn">Pricing</a>
+                <div class="dropdown-content">
+                    <a href="website-pricing.html">Websites</a>
+                    <a href="design-pricing.html">Graphics</a>
+                    <a href="branding-pricing.html">Branding</a>
+                </div>
+            </div>
+            <a href="quote.html">Get Quote</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Poster Design Pricing Plans</h1>
+        <div class="toggle-buttons">
+            <input type="radio" name="usage" id="personal" checked onclick="showPricing('personal')">
+            <label for="personal">Personal</label>
+            <input type="radio" name="usage" id="business" onclick="showPricing('business')">
+            <label for="business">Events/Festivals</label>
+        </div>
+    
+        <div class="pricing-section" id="personal-section">
+            <div class="pricing-box">
+                <h3>Basic Poster Design</h3>
+                <b><p>R150</p></b>
+                <ul>
+                    <li>This rate can cover simpler designs with fewer revisions and a quicker turnaround.</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Standard Poster Design</h3>
+                <b><p>R250</p></b>
+                <ul>
+                    <li>This could include more detailed designs, a few rounds of revisions, and a more comprehensive design process.</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Complex Poster Design</h3>
+                <b><p>R500</p></b>
+                <ul>
+                    <li>This rate would be for more intricate designs requiring extensive custom graphics, multiple revisions, and a longer development time.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="pricing-section" id="business-section">
+            <!-- Content for the business section remains unchanged -->
+            <div class="pricing-box">
+                <h3>Basic Event Package</h3>
+                <b><p>R550</p></b>
+                <ul>
+                    <li>6 Posters</li>
+                    <li>Event Logo</li>
+                    <li>Ticket Design (front)</li>
+                    <li>Any other additions will be charged accordingly</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Standard Event Package</h3>
+                <b><p>R850</p></b>
+                <ul>
+                    <li>15 Posters</li>
+                    <li>Event Logo</li>
+                    <li>Ticket Design (front)</li>
+                    <li>360 Rotating Logo</li>
+                    <li>3 Countdown Posters</li>
+                    <li>Sold out posters</li>
+                    <li>Rules/Regulations</li>
+                    <li>Any other additions will be charged accordingly</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Complex Event Package</h3>
+                <b><p>R1550</p></b>
+                <ul>
+                    <li>30 Posters</li>
+                    <li>Event Logo</li>
+                    <li>Ticket Design (front & back)</li>
+                    <li>360 Rotating Logo</li>
+                    <li>5 Countdown Posters</li>
+                    <li>Sold out posters</li>
+                    <li>Banner 2560x1440 px</li>
+                    <li>Rules/Regulations</li>
+                    <li>Merch Design x2</li>
+                    <li>Any other additions will be charged accordingly</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <img src="images/logo.png" alt="Image 1">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="websites.html">Web Design</a></li>
+                <li><a href="graphicdesign.html">Graphic Design</a></li>
+                <li><a href="branding.html">Branding</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+                <li>Careers: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+            
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Privacy Policy</h3>
+            <p>Your privacy is important to us. Read our <a href="privacypolicy.html">Privacy Policy</a>.</p>
+      
+            <h4>Terms of Service</h4>
+            <p>By using our services, you agree to our <a href="termsofservice.html">Terms of Service</a>.</p>
+        </div>
+    </footer>
+    <script>
+        function showPricing(option) {
+            document.getElementById('personal-section').classList.remove('active');
+            document.getElementById('business-section').classList.remove('active');
+            if (option === 'personal') {
+                document.getElementById('personal-section').classList.add('active');
+            } else if (option === 'business') {
+                document.getElementById('business-section').classList.add('active');
+            }
+        }
+    
+        // Initialize the default active section
+        showPricing('personal');
+    </script>
+      <script>
+        function toggleMenu() {
+          const menu = document.getElementById('menu');
+          menu.classList.toggle('open');
+        }
+    
+      document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const dropdownContent = btn.nextElementSibling;
+            dropdownContent.style.display = 
+                dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    </script>
+     <script src="script.js"></script>
+</body>
+</html>

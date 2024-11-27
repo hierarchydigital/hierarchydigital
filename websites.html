@@ -3,308 +3,456 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRICING | HIERARCHY DIGITAL</title>
-  <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <title>HIERARCHY DIGITAL</title>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="images\logo.png">
+</head>
 <style>
-    .container {
-        max-width: 100%;
-        width: 100%;
-        padding: 20px;
-        margin-top: 100px;
-    }
-
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #fff;
-    }
-
-    .toggle-buttons {
+        .footer img{
+            width: 100px;
+        }
+        .artwork-wall {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 70px;
+            margin-bottom: 50px;
+        }
+        .poster {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 25px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .poster img {
+            width: 90%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease, transform 0.3s ease;
+            justify-content: center;
+            align-items: center;
+        }
+        .poster:hover img {
+            filter: blur(5px);
+            transform: scale(1.05);
+        }
+        .description {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .poster:hover .description {
+            opacity: 1;
+        }
+        .carousel-container {
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            border: 2px solid #dddddd00;
+            border-radius: 10px;
+            background: #ffffff00;
+            margin-bottom: 60px;
+        }
+        .carousel {
+            display: flex;
+            animation: move 15s linear infinite;
+        }
+        .carousel img {
+            width: auto;
+            height: 50px;
+            margin-right: 25px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        @keyframes move {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    .selection-container {
         display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .toggle-buttons input[type="radio"] {
-        display: none;
-    }
-
-    .toggle-buttons label {
-        padding: 10px 20px;
-        margin: 0 10px;
-        border-radius: 20px;
-        background-color: rgba(31, 92, 150, 0.8);
-        color: #fff;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        text-align: center;
+        gap: 20px;
+        max-width: 100%; /* Adjust max-width as needed */
+        margin: auto;
+        margin-bottom: 100px;
     }
 
-    .toggle-buttons label:hover {
-        background-color: rgba(31, 92, 150, 0.8);;
-        transform: scale(1.05);
-    }
-
-    .toggle-buttons input[type="radio"]:checked + label {
-        background-color: rgba(20, 62, 100, 0.8);
-        transform: scale(1.05);
-    }
-
-    .pricing-section {
-        display: none;
-        margin-bottom: 40px;
-    }
-
-    .pricing-section.active {
+    .small-boxes {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .pricing-box {
-        background-color: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        gap: 15px;
+        justify-content: center;
+        padding: 5px;
         width: 100%;
-        max-width: 100%;
-        margin: 20px;
+    }
+
+    .small-box {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(145deg, #1A1A1A, #333);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        position: relative;
+        text-align: center;
+        font-size: 14px; /* Adjust font size for smaller screens */
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .small-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(145deg, #333, #1A1A1A);
+    }
+
+    .small-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 12px;
+    }
+
+    .small-box:hover::before {
+        opacity: 1;
+    }
+
+    .large-box {
+        display: none;
+        width: 90%; /* Adjust width for smaller screens */
+        max-width: 100%; /* Maximum width for larger screens */
+        height: auto; /* Adjust height based on content */
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px; /* Rounded corners */
         padding: 20px;
-        transition: transform 0.3s ease;
+        text-align: center;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        animation: fadeIn 0.5s ease-in-out;
+        background: linear-gradient(145deg, #1A1A1A, #333);
     }
 
-    .pricing-box:hover {
-        transform: scale(1.05);
+    .large-box-content {
+        width: 100%;
     }
 
-    .pricing-box h3 {
-        margin-top: 0;
-        color: rgba(31, 92, 150, 0.8);;
+    .large-box h3 {
+        margin-bottom: 10px;
+        font-size: 18px; /* Adjust font size for smaller screens */
+        font-weight: bold;
+        color: #333;
+    }
+
+
+
+    .large-box p {
+        font-size: 14px; /* Adjust font size for smaller screens */
+        line-height: 1.5;
+        color: #666;
+    }
+
+
+
+    /* Specific gradients for large boxes */
+    #branding {
+        background: linear-gradient(145deg, #FFFFFF, #578bb6);
+    }
+
+    #logo-design {
+        background: linear-gradient(145deg, #FFFFFF, #4682B4);
+    }
+
+    #poster-design {
+        background: linear-gradient(145deg, #FFFFFF, #4682B4);
+    }
+
+    @media (max-width: 768px) {
+        .small-box {
+            width: calc(33.33% - 20px); /* Adjust width for smaller screens */
+        }
+        .large-box {
+            width: 90vw; /* Adjust width for smaller screens */
+            max-width: none; /* Remove maximum width for smaller screens */
+        }
+    }
+    .footer {
+        background-color: #1A1A1A;
+        color: white;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .footer-section {
+        flex: 1 1 250px;
+        margin-bottom: 20px;
+    }
+
+    .footer-section h5 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 8px;
+    }
+
+    .footer-section a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: #6BAFFF;
+    }
+
+    .footer-logo {
+        width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .footer-social {
+        margin-top: 20px;
+    }
+
+    .footer-social a {
+        display: inline-block;
+        margin-right: 10px;
+        color: white;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-social a:hover {
+        color: #6BAFFF;
+    }
+
+    .footer-legal {
+        text-align: center;
+        width: 100%;
+        font-size: 0.9rem;
+        margin-top: 20px;
+    }
+
+    .graphic-work{
+        margin-top: 100px;
+        color: #FFFFFF;
         font-size: 1.5rem;
     }
 
-    .pricing-box p {
-        margin: 10px 0;
+    .graphic-image{
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        margin-top: 20px;
+        border-radius: 15px;
     }
 
-    .pricing-box ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .pricing-box ul li {
-        margin: 10px 0;
-        padding-left: 20px;
-        position: relative;
-    }
-
-    .pricing-box ul li::before {
-        content: '•';
-        position: absolute;
-        left: 0;
-        color: rgba(31, 92, 150, 0.8);
+    .graphic-content a{
+        text-decoration: none;
+        color: #174396;
+        font-size: 1.2rem;
     }
 </style>
-</head>
-<header class="header">
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <div class="logo">
-        <img src="images/logo.png" alt="Logo">
-    </div>
-    <nav id="menu">
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-            <a href="#" class="dropdown-btn">Pricing</a>
-            <div class="dropdown-content">
-                <a href="websites.html">Websites</a>
-                <a href="graphics.html">Graphics</a>
-                <a href="branding.html">Branding</a>
+<body>
+    <header class="header">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <nav id="menu">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-btn">Pricing</a>
+                <div class="dropdown-content">
+                    <a href="website-pricing.html">Websites</a>
+                    <a href="design-pricing.html">Graphics</a>
+                    <a href="branding-pricing.html">Branding</a>
+                </div>
             </div>
+            <a href="quote.html">Get Quote</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="graphic-work">
+        <div class="graphic-grid">
+          <h1>Websites</h1>
         </div>
-        <a href="quote.html">Get Quote</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-</header>
-<div class="container">
-    <h1>Website Pricing Plans</h1>
-    <div class="toggle-buttons">
-        <input type="radio" name="usage" id="personal" checked onclick="showPricing('personal')">
-        <label for="personal">Portfolio</label>
-        <input type="radio" name="usage" id="business" onclick="showPricing('business')">
-        <label for="business">E-commerce</label>
-    </div>
-
-    <div class="pricing-section" id="personal-section">
-        <div class="pricing-box">
-            <h3>Basic Plan</h3>
-            <b><p>R400 once off fee</p></b>
-            <ul>
-                <li>Github hosting</li>
-                <li>Simple Functional Site</li>
-                <li>A simple, functional website. Perfect for personal portfolios</li>
-                <li>Up to 2 Pages</li>
-                <li>Responsive design</li>
-                <li>Up to 5 images upload</li>
-                <li>R50 Maintenance fee per month if client wants maintenance</li>
-                <b><li>Additional fees will be discussed during client call</li></b>
-            </ul>
+        <div class="graphic-grid">
+            <p>Explore our catalogue of event poster designs , designed to elevate your brand.</p>
         </div>
-        <div class="pricing-box">
-            <h3>Standard Plan</h3>
-            <b><p>R900 once off fee</p></b>
-            <ul>
-                <li>Cloudflare hosting</li>
-                <li>A professional website with advanced professional Presence</li>
-                <li>Features for small businesses or blogs.</li>
-                <li>Up to 5 Pages</li>
-                <li>Responsive design</li>
-                <li>Up to 10 images upload</li>
-                <li>3 plugin/installation</li>
-                <li>Up to 10 Products</li>
-                <li>Hosting setup</li>
-                <li>R100 Maintenance fee per month if client wants maintenance</li>
-                <b><li>Additional fees will be discussed during client call</li></b>
-            </ul>
-        </div>
-        <div class="pricing-box">
-            <h3>Premium Plan</h3>
-            <b><p>R2000 once off fee</p></b>
-            <ul>
-                <li>Cloudflare hosting</li>
-                <li>A complete solution tailored for businesses with integrated tools. </li>
-                <li>Features for small businesses or blogs.</li>
-                <li>Up to 10 Pages</li>
-                <li>Responsive design</li>
-                <li>Up to 20 images upload</li>
-                <li>5 plugin/installation</li>
-                <li>Hosting setup</li>
-                <li>Speed Optimisation</li>
-                <li>Forms</li>
-                <li>R150 Maintenance fee per month if client wants maintenance</li>
-                <b><li>Additional fees will be discussed during client call</li></b>
-            </ul>
-        </div>
-    </div>
-
-    <div class="pricing-section" id="business-section">
-        <div class="pricing-box">
-            <h3>Basic Plan</h3>
-            <b><p>R600 once off fee</p></b>
-            <ul>
-                <li>Github hosting</li>
-                <li>Simple Functional Site</li>
-                <li>A simple, functional website site with basic e-commerce functionality. Perfect for personal portfolios</li>
-                <li>Up to 3 Pages</li>
-                <li>Responsive design</li>
-                <li>Up to 5 products upload</li>
-                <li>1 plugin/installation</li>
-                <li>R100 Maintenance fee per month if client wants maintenance</li>
-                <b><li>Additional fees/information will be discussed during client call</li></b>
-            </ul>
-        </div>
-        <div class="pricing-box">
-            <h3>Standard Plan</h3>
-            <b><p>R1500 once off fee</p></b>
-            <ul>
-                <li>Standard hosting</li>
-                <li>A professional website with advanced E-commerce Presence</li>
-                <li>Features for small businesses or stores.</li>
-                <li>Up to 5 Pages</li>
-                <li>Responsive design</li>
-                <li>Up to 10 products upload</li>
-                <li>3 plugin/installation</li>
-                <li>E-commerce functionality</li>
-                <li>Payment Processing</li>
-                <li>Hosting setup</li>
-                <li>R200 Maintenance fee per month if client wants maintenance</li>
-                <b><li>Additional fees/information will be discussed during client call</li></b>
-            </ul>
-        </div>
-        <div class="pricing-box">
-            <h3>Premium Plan</h3>
-            <b><p>R4000 once off fee</p></b>
-            <ul>
-                <li>Shopify hosting</li>
-                <li>A complete e-commerce solution tailored for businesses with integrated tools. </li>
-                <li>Features for small businesses or blogs.</li>
-                <li>Up to 10 Pages</li>
-                <li>Responsive design</li>
-                <li>5 plugin/installation</li>
-                <li>E-commerce functionality</li>
-                <li>Up to 50 Products</li>
-                <li>Payment Processing</li>
-                <li>Hosting setup</li>
-                <li>Speed Optimisation</li>
-                <li>Forms</li>
-                <li>R350 Maintenance fee per month if client wants maintenance</li>
-                <b><li>Additional fees will be discussed during client call</li></b>
-            </ul>
-        </div>
-    </div>
-</div>
-<footer class="footer">
-  
-    <div class="footer-section">
-        <h3>Services</h3>
-        <ul>
-            <li><a href="websites.html">Web Design</a></li>
-            <li><a href="graphics.html">Graphic Design</a></li>
-            <li><a href="branding.html">Branding</a></li>
-        </ul>
-    </div>
-    <div class="footer-section">
-        <h3>Contact Us</h3>
-        <ul>
-            <li>Email: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
-            <li>Careers: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
         
-        </ul>
-    </div>
-  
-    <div class="footer-section">
-        <h3>Privacy Policy</h3>
-        <p>Your privacy is important to us. Read our <a href="privacypolicy.html">Privacy Policy</a>.</p>
-  
-        <h4>Terms of Service</h4>
-        <p>By using our services, you agree to our <a href="termsofservice.html">Terms of Service</a>.</p>
-    </div>
-</footer>
-<script>
-    function showPricing(option) {
-        document.getElementById('personal-section').classList.remove('active');
-        document.getElementById('business-section').classList.remove('active');
-        if (option === 'personal') {
-            document.getElementById('personal-section').classList.add('active');
-        } else if (option === 'business') {
-            document.getElementById('business-section').classList.add('active');
+        <div class="graphic-grid">
+          <!-- Project 1 -->
+          <div class="graphic-card">
+            <img src="images/rfs.jpg" alt="Branding Project" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Event poster for the 2024 Riverfront sessions event.</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="graphic-card">
+            <img src="images/nirv.png" alt="Poster Design" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Oasis Events Nirvana After Party poster.</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="graphic-card">
+            <img src="images/si23.png" alt="Logo Design" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Event poster for the 2023 Oasis Summer Invasion.</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+            <!-- Project 4 -->
+          <div class="graphic-card">
+            <img src="images/ut.png" alt="Logo Design" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Oasis Events Utopia Fest 2024 Poster</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+            <!-- Project 5 -->
+          <div class="graphic-card">
+            <img src="images/wp23.jpg" alt="Logo Design" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Oasis Winter Party 2023 Announcement Poster.</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+            <!-- Project 5.1 -->
+            <div class="graphic-card">
+                <img src="images/riv.png" alt="Logo Design" class="graphic-image">
+                <div class="graphic-content">
+                    <h3>Event Poster</h3>
+                    <p>Riverside High 2024 Funday poster.</p>
+                  <a href="quote.html">Enquire</a>
+                </div>
+              </div>
+            <!-- Project 6 -->
+            <div class="graphic-card">
+                <img src="images/sui.jpg" alt="Logo Design" class="graphic-image">
+                <div class="graphic-content">
+                    <h3>Event Poster</h3>
+                    <p>Hoerskool Suiderlig Valentine's day poster.</p>
+                  <a href="quote.html">Enquire</a>
+                </div>
+              </div>
+            <!-- Project 7 -->
+            <div class="graphic-card">
+                <img src="images/don.jpg" alt="Logo Design" class="graphic-image">
+                <div class="graphic-content">
+                    <h3>Event Poster</h3>
+                    <p>Easter Donation drive initiative for Suncrest High School 2024.</p>
+                  <a href="quote.html">Enquire</a>
+                </div>
+              </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="footer-section">
+            <img src="images/logo.png" alt="Image 1">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="websites.html">Web Design</a></li>
+                <li><a href="graphicdesign.html">Graphic Design</a></li>
+                <li><a href="branding.html">Branding</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+                <li>Careers: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+            
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Privacy Policy</h3>
+            <p>Your privacy is important to us. Read our <a href="privacypolicy.html">Privacy Policy</a>.</p>
+      
+            <h4>Terms of Service</h4>
+            <p>By using our services, you agree to our <a href="termsofservice.html">Terms of Service</a>.</p>
+        </div>
+    </footer>
+      <script>
+        function toggleMenu() {
+          const menu = document.getElementById('menu');
+          menu.classList.toggle('open');
         }
-    }
-
-    // Initialize the default active section
-    showPricing('personal');
-</script>
-<script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('open');
-    }
-
-  document.querySelectorAll('.dropdown-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const dropdownContent = btn.nextElementSibling;
-        dropdownContent.style.display = 
-            dropdownContent.style.display === 'block' ? 'none' : 'block';
+    
+      document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const dropdownContent = btn.nextElementSibling;
+            dropdownContent.style.display = 
+                dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
     });
-});
-</script>
-<script src="script.js"></script>
-</body>
-</html>
+    </script>
+    <script>
+        function showDetails(id) {
+            // Hide all large boxes
+            document.querySelectorAll('.large-box').forEach(box => {
+                box.style.display = 'none';
+            });
+            // Show the selected large box
+            document.getElementById(id).style.display = 'flex';
+        }
+    </script>
+    </body>
+    </html>
+    

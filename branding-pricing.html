@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRANDING | HIERARCHY DIGITAL</title>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images\logo.png">
+<style>
+    .container {
+        max-width: 100%;
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 90px;
+        color: #fff;
+    }
+
+    .toggle-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .toggle-buttons input[type="radio"] {
+        display: none;
+    }
+
+    .toggle-buttons label {
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 20px;
+        background-color: rgba(31, 92, 150, 0.8);;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .toggle-buttons label:hover {
+        background-color: rgba(31, 92, 150, 0.8);;
+        transform: scale(1.05);
+    }
+
+    .toggle-buttons input[type="radio"]:checked + label {
+        background-color: rgba(19, 56, 90, 0.8);;
+        transform: scale(1.05);
+    }
+
+    .pricing-section {
+        display: none;
+        margin-bottom: 40px;
+    }
+
+    .pricing-section.active {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .pricing-box {
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 100%;
+        margin: 20px;
+        padding: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .pricing-box:hover {
+        transform: scale(1.05);
+    }
+
+    .pricing-box h3 {
+        margin-top: 0;
+        color: rgba(31, 92, 150, 0.8);;
+        font-size: 1.5rem;
+    }
+
+    .pricing-box p {
+        margin: 10px 0;
+    }
+
+    .pricing-box ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .pricing-box ul li {
+        margin: 10px 0;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .pricing-box ul li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: rgba(31, 92, 150, 0.8);
+    }
+</style>
+<body>
+    <header class="header">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <nav id="menu">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-btn">Pricing</a>
+                <div class="dropdown-content">
+                    <a href="website-pricing.html">Websites</a>
+                    <a href="design-pricing.html">Graphics</a>
+                    <a href="branding-pricing.html">Branding</a>
+                </div>
+            </div>
+            <a href="quote.html">Get Quote</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Branding Pricing Plans</h1>
+        <div class="toggle-buttons">
+            <input type="radio" name="usage" id="personal" checked onclick="showPricing('personal')">
+            <label for="personal">Logos</label>
+            <input type="radio" name="usage" id="business" onclick="showPricing('business')">
+            <label for="business">Marketing</label>
+        </div>
+    
+        <div class="pricing-section" id="personal-section">
+            <div class="pricing-box">
+                <h3>Basic Logo Design</h3>
+                <b><p>R350</p></b>
+                <ul>
+                    <li>Simple logo design with basic concept development </li>
+                    <li>Few initial revisions</li>
+                    <li>Suitable for smaller businesses or startups.</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Standard Logo Design</h3>
+                <b><p>R750</p></b>
+                <ul>
+                    <li>Includes more detailed concept development</li>
+                    <li>Several revisions</li> 
+                    <li>Possibly multiple initial design concepts</li>
+                    <li>Suitable for medium-sized businesses looking for a more refined logo.</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Premium Logo Design</h3>
+                <b><p>R1500</p></b>
+                <ul>
+                    <li>Custom-designed logo with extensive concept development</li> 
+                    <li>Unlimited revisions</li>
+                    <li>High-end design quality</li>
+                    <li>Possibly additional services like brand identity guidelines</li> 
+                    <li>Ideal for larger corporations or businesses with specific branding needs.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="pricing-section" id="business-section">
+            <!-- Content for the business section remains unchanged -->
+            <div class="pricing-box">
+                <h3>Basic Package</h3>
+                <b><p>R1000</p></b>
+                <ul>
+                    <li>Ideal for small businesses or startups needing essential marketing materials.</li>
+                    <li>Business Card Design: Simple, professional business card design.</li>
+                    <li>Flyer Design: Single-sided flyer design for promotions or events.</li>
+                    <li>Basic Brochure Design: Tri-fold or bi-fold brochure with up to 6 panels.</li>
+                    <li>Social Media Post Template: One template for social media posts.</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Standard Package</h3>
+                <b><p>R2500</p></b>
+                <ul>
+                    <li>Suitable for medium-sized businesses looking for a more comprehensive set of marketing materials.
+    Include</li>
+                    <li>Business Card Design: Custom, high-quality business card design with multiple revisions.</li>
+                    <li>Flyer Design: Double-sided flyer design for detailed promotions or events.</li>
+                    <li>Standard Brochure Design: Multi-page brochure with custom graphics and content.</li>
+                    <li>Letterhead and Envelope Design: Professional letterhead and envelope designs for business correspondence.</li>
+                    <li>Social Media Post Templates: Three templates for different types of social media posts.</li>
+                    <li>Email Newsletter Template: One branded email template for marketing campaigns.</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                  <h3>Premium Package</h3>
+                <b><p>R5000</p></b>
+                <ul>
+    
+                    <li>Best for larger businesses needing a wide range of high-end, custom-designed marketing materials.
+    Includes</li>
+                    <li>Business Card Design: Premium, custom-designed business cards with multiple concepts and revisions.</li>
+                    <li>Flyer Design: Double-sided flyer with custom illustrations and detailed information.</li>
+                    <li>Complex Brochure Design: Multi-page, custom-designed brochure with advanced graphics and layout.</li>
+                    <li>Social Media Post Templates: Five unique templates for various social media platforms.</li>
+                    <li>Email Newsletter Templates: Two branded email templates for different types of campaigns.</li>
+                    <li>Business Card Design: Custom, high-quality business card design with multiple revisions.</li>
+                    <li>Letterhead and Envelope Design: Custom letterhead and envelope designs, including digital and print versions.</li>
+                     <li>Presentation Folder Design: Custom-designed folder for holding marketing materials.</li>
+                    <li>Poster Design: One poster design for events, promotions, or branding.</li>
+                    <li>Banner Design: One web banner or ad banner design for online marketing.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <img src="images/logo.png" alt="Image 1">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="websites.html">Web Design</a></li>
+                <li><a href="graphicdesign.html">Graphic Design</a></li>
+                <li><a href="branding.html">Branding</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+                <li>Careers: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+            
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Privacy Policy</h3>
+            <p>Your privacy is important to us. Read our <a href="privacypolicy.html">Privacy Policy</a>.</p>
+      
+            <h4>Terms of Service</h4>
+            <p>By using our services, you agree to our <a href="termsofservice.html">Terms of Service</a>.</p>
+        </div>
+    </footer>
+    
+    <script>
+        function showPricing(option) {
+            document.getElementById('personal-section').classList.remove('active');
+            document.getElementById('business-section').classList.remove('active');
+            if (option === 'personal') {
+                document.getElementById('personal-section').classList.add('active');
+            } else if (option === 'business') {
+                document.getElementById('business-section').classList.add('active');
+            }
+        }
+    
+        // Initialize the default active section
+        showPricing('personal');
+    </script>
+      <script>
+        function toggleMenu() {
+          const menu = document.getElementById('menu');
+          menu.classList.toggle('open');
+        }
+    
+      document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const dropdownContent = btn.nextElementSibling;
+            dropdownContent.style.display = 
+                dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    </script>
+     <script src="script.js"></script>
+</body>
+</html>
