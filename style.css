@@ -549,3 +549,11 @@ color: #ffffff;
   cursor: pointer;
   display: inline-block;
 }
+.her-content a {
+  text-decoration: none;
+  color: #1A1A1A;
+}
+
+.her-content li {
+  font-size: 1.4rem;
+}
