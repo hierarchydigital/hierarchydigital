@@ -9,11 +9,6 @@
   <link rel="icon" href="images\logo.png">
 </head>
 <style>
-        .graphic-grid a {
-            text-decoration: none;
-        color: #174396;
-        font-size: 1.2rem;
-        }
         .footer img{
             width: 100px;
         }
@@ -284,7 +279,25 @@
         margin-top: 20px;
     }
 
+    .graphic-work{
+        margin-top: 100px;
+        color: #FFFFFF;
+        font-size: 1.5rem;
+    }
 
+    .graphic-image{
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        margin-top: 20px;
+        border-radius: 15px;
+    }
+
+    .graphic-content a{
+        text-decoration: none;
+        color: #174396;
+        font-size: 1.2rem;
+    }
 </style>
 <body>
     <header class="header">
@@ -307,127 +320,141 @@
         </nav>
     </header>
     
-  <div class="hero-section">
-      <div class="hero-content">
-          <h1>Give Your Business the Online Presence It Deserves</h1>
-          <p>Partner with us to elevate your brand to the next level.</p>
-          <a href="quote.html" class="cta-button">Request Quote</a>
-      </div>
-  </div>
-  <section class="graphic-work">
-    <h2>Services</h2>
-    <div class="graphic-grid">
-        <!-- Graphic Work Cards -->
-        <div class="graphic-card">
-            <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/500/external-branding-marketing-agency-flaticons-lineal-color-flat-icons-3.png" alt="Graphic Work 1" class="graphic-logo"> <!-- Update with actual graphic path -->
-            <h3>Branding</h3>
-            <a href="graphics.html">View Projects​</a>
+    <section class="graphic-work">
+        <div class="graphic-grid">
+          <h1>Graphic Design Projects</h1>
         </div>
-        <div class="graphic-card">
-            <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/500/external-website-seo-flaticons-lineal-color-flat-icons.png" alt="Graphic Work 2" class="graphic-logo"> <!-- Update with actual graphic path -->
-            <h3>Websites</h3>
-            <a href="graphics.html">View Projects​</a>
+        <div class="graphic-grid">
+            <p>Explore our catalogue of event poster designs , designed to elevate your brand.</p>
         </div>
-        <div class="graphic-card">
-            <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/500/external-graphic-design-social-media-agency-flaticons-lineal-color-flat-icons-6.png" alt="Graphic Work 3" class="graphic-logo"> <!-- Update with actual graphic path -->
-            <h3>Graphic Design</h3>
-            <a href="gdesign.html">View Projects​</a>
-        </div>
-        <!-- Add more graphic works as needed -->
-    </div>
-    <a href="quote.html" class="ctaa-button">Request Quote</a>
-</section>
-
-<div class="text-gradient">
-    <p>Hierarchy Digital offers exceptional visual communication solutions and dynamic web design services that elevate brands and enhance user experiences.</p>
-</div>
-<div class="carousel-container">
-    <h2>Companies that trust us</h2>
-    <div class="carousel" id="carousel">
-        <img src="images/quizbrawl.png" alt="Image 1">
-        <img src="images/fer.png" alt="Image 3">
-        <img src="images/mohaladi.png" alt="Image 4">
-        <img src="images/destiny.png" alt="Image 5">
-        <!-- Duplicate images for seamless looping -->
-        <img src="images/quizbrawl.png" alt="Image 1">
-        <img src="images/fer.png" alt="Image 3">
-        <img src="images/mohaladi.png" alt="Image 4">
-        <img src="images/destiny.png" alt="Image 5">
-                <!-- Duplicate images for seamless looping -->
-        <img src="images/quizbrawl.png" alt="Image 1">
-        <img src="images/fer.png" alt="Image 3">
-        <img src="images/mohaladi.png" alt="Image 4">
-        <img src="images/destiny.png" alt="Image 5">
-    </div>
-</div>
-<div class="artwork-wall">
-    <!-- Poster 1 -->
-    <div class="poster">
-        <img src="images/si23.png" alt="Poster 1">
-        <div class="description">High Quality Poster for the Oasis Summer Invasion 2022</div>
-    </div>
-    <!-- Poster 2 -->
-    <div class="poster">
-        <img src="images/nirv.png" alt="Poster 2">
-        <div class="description">Vibrant poster for the Nirvana After Party 2024</div>
-    </div>
-    <!-- Poster 3 -->
-    <div class="poster">
-        <img src="images/ut.png" alt="Poster 3">
-        <div class="description">Poster for the Oasis Events Utopia Fest 2024</div>
-    </div>
-</div>
-<footer class="footer">
-    <div class="footer-section">
-        <img src="images/logo.png" alt="Image 1">
-        <h3>Services</h3>
-        <ul>
-            <li><a href="websites.html">Web Design</a></li>
-            <li><a href="graphics.html">Graphic Design</a></li>
-            <li><a href="branding.html">Branding</a></li>
-        </ul>
-    </div>
-    <div class="footer-section">
-        <h3>Contact Us</h3>
-        <ul>
-            <li>Email: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
-            <li>Careers: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
         
-        </ul>
-    </div>
-  
-    <div class="footer-section">
-        <h3>Privacy Policy</h3>
-        <p>Your privacy is important to us. Read our <a href="privacypolicy.html">Privacy Policy</a>.</p>
-  
-        <h4>Terms of Service</h4>
-        <p>By using our services, you agree to our <a href="termsofservice.html">Terms of Service</a>.</p>
-    </div>
-
-</footer>
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('open');
-    }
-
-  document.querySelectorAll('.dropdown-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const dropdownContent = btn.nextElementSibling;
-        dropdownContent.style.display = 
-            dropdownContent.style.display === 'block' ? 'none' : 'block';
-    });
-});
-</script>
-<script>
-    function showDetails(id) {
-        // Hide all large boxes
-        document.querySelectorAll('.large-box').forEach(box => {
-            box.style.display = 'none';
+        <div class="graphic-grid">
+          <!-- Project 1 -->
+          <div class="graphic-card">
+            <img src="images/rfs.jpg" alt="Branding Project" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Event poster for the 2024 Riverfront sessions event.</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="graphic-card">
+            <img src="images/nirv.png" alt="Poster Design" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Oasis Events Nirvana After Party poster.</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="graphic-card">
+            <img src="images/si23.png" alt="Logo Design" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Event poster for the 2023 Oasis Summer Invasion.</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+            <!-- Project 4 -->
+          <div class="graphic-card">
+            <img src="images/ut.png" alt="Logo Design" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Oasis Events Utopia Fest 2024 Poster</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+            <!-- Project 5 -->
+          <div class="graphic-card">
+            <img src="images/wp23.jpg" alt="Logo Design" class="graphic-image">
+            <div class="graphic-content">
+                <h3>Event Poster</h3>
+                <p>Oasis Winter Party 2023 Announcement Poster.</p>
+              <a href="quote.html">Enquire</a>
+            </div>
+          </div>
+            <!-- Project 5.1 -->
+            <div class="graphic-card">
+                <img src="images/riv.png" alt="Logo Design" class="graphic-image">
+                <div class="graphic-content">
+                    <h3>Event Poster</h3>
+                    <p>Riverside High 2024 Funday poster.</p>
+                  <a href="quote.html">Enquire</a>
+                </div>
+              </div>
+            <!-- Project 6 -->
+            <div class="graphic-card">
+                <img src="images/sui.jpg" alt="Logo Design" class="graphic-image">
+                <div class="graphic-content">
+                    <h3>Event Poster</h3>
+                    <p>Hoerskool Suiderlig Valentine's day poster.</p>
+                  <a href="quote.html">Enquire</a>
+                </div>
+              </div>
+            <!-- Project 7 -->
+            <div class="graphic-card">
+                <img src="images/don.jpg" alt="Logo Design" class="graphic-image">
+                <div class="graphic-content">
+                    <h3>Event Poster</h3>
+                    <p>Easter Donation drive initiative for Suncrest High School 2024.</p>
+                  <a href="quote.html">Enquire</a>
+                </div>
+              </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="footer-section">
+            <img src="images/logo.png" alt="Image 1">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="websites.html">Web Design</a></li>
+                <li><a href="graphics.html">Graphic Design</a></li>
+                <li><a href="branding.html">Branding</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>Email: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+                <li>Careers: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+            
+            </ul>
+        </div>
+      
+        <div class="footer-section">
+            <h3>Privacy Policy</h3>
+            <p>Your privacy is important to us. Read our <a href="privacypolicy.html">Privacy Policy</a>.</p>
+      
+            <h4>Terms of Service</h4>
+            <p>By using our services, you agree to our <a href="termsofservice.html">Terms of Service</a>.</p>
+        </div>
+    
+    </footer>
+      <script>
+        function toggleMenu() {
+          const menu = document.getElementById('menu');
+          menu.classList.toggle('open');
+        }
+    
+      document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const dropdownContent = btn.nextElementSibling;
+            dropdownContent.style.display = 
+                dropdownContent.style.display === 'block' ? 'none' : 'block';
         });
-        // Show the selected large box
-        document.getElementById(id).style.display = 'flex';
-    }
-</script>
-</body>
-</html>
+    });
+    </script>
+    <script>
+        function showDetails(id) {
+            // Hide all large boxes
+            document.querySelectorAll('.large-box').forEach(box => {
+                box.style.display = 'none';
+            });
+            // Show the selected large box
+            document.getElementById(id).style.display = 'flex';
+        }
+    </script>
+    </body>
+    </html>
+    
