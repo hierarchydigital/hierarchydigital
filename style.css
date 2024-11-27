@@ -132,6 +132,34 @@
       width: auto;
       margin-left: -20px;
     }
+    .ctaaaa-button{
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 12px 24px; /* Adjusted padding for smaller screens */
+      text-decoration: none;
+      font-size: 0.8em; /* Adjusted font size for smaller screens */
+      border-radius: 50px; /* make it pill-shaped */
+      transition: background-color 0.3s, color 0.3s;
+      cursor: pointer;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+    
+    .ctaa-button{
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 12px 24px; /* Adjusted padding for smaller screens */
+      text-decoration: none;
+      font-size: 0.8em; /* Adjusted font size for smaller screens */
+      border-radius: 50px; /* make it pill-shaped */
+      transition: background-color 0.3s, color 0.3s;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 40px;
+    }
+    
   }
 
   .her-section {
@@ -474,6 +502,22 @@ color: #ffffff;
   font-size: 1.4rem;
   margin-bottom: 20px;
 }
+.ctaaaa-button{
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 12px 24px; /* Adjusted padding for smaller screens */
+  text-decoration: none;
+  font-size: 1em; /* Adjusted font size for smaller screens */
+  border-radius: 50px; /* make it pill-shaped */
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 31%;
+}
+
 .ctaa-button{
   background-color: transparent;
   color: #fff;
@@ -491,4 +535,17 @@ color: #ffffff;
 
 .footer img{
   width: 100px;
+}
+
+.ctaaa-button{
+  background-color: transparent;
+  color: #1f5c96;
+  border: 2px solid #1f5c96;
+  padding: 10px 20px; /* Adjusted padding for smaller screens */
+  text-decoration: none;
+  font-size: 0.9rem; /* Adjusted font size for smaller screens */
+  border-radius: 50px; /* make it pill-shaped */
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  display: inline-block;
 }
