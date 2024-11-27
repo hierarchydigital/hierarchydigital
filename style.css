@@ -407,6 +407,8 @@
   font-size: 0.9rem;
   margin-top: 20px;
 }
+
+
 .graphic-work {
   margin: 2rem 0; /* Add margin for spacing */
   font-size: 1.3rem;
@@ -557,4 +559,85 @@ color: #ffffff;
 
 .her-content li {
   font-size: 1.4rem;
+}
+@media (min-width: 1024px) {
+  /* Center services boxes */
+  .pricing-box {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 100%;
+    margin: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+  footer img {
+    margin-top: -10px;
+  }
+
+  .graphic-grid {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      gap: 20px; /* Add spacing between cards */
+      flex-wrap: wrap;
+  }
+  
+  .graphic-work h2 {
+    margin-top: -350px;
+  }
+
+  header .logo{
+    margin-left: 5px;
+  }
+  .graphic-card {
+      flex: 0 1 calc(33.33% - 40px); /* Three cards per row with spacing */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  /* Center Request Quote buttons */
+  .ctaa-button {
+      display: block;
+      margin: 20px auto; /* Center button horizontally */
+      text-align: center;
+      width: 200px;
+      margin-bottom: 60px;
+  }
+
+  /* Make carousel span full width */
+  .carousel-container {
+      width: 100%; /* Full width */
+      max-width: 100%; /* Remove max-width limitation */
+  }
+
+  .carousel img{
+    margin-left: 50px;
+  }
+  .carousel {
+      justify-content: space-between;
+  }
+
+  /* Fit event posters in one row */
+  .artwork-wall {
+      display: flex;
+      flex-wrap: nowrap; /* Prevent wrapping */
+      gap: 1px; /* Add spacing */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+  }
+
+  .poster img {
+      width: 83%; /* Reduce size */
+      height: auto; /* Maintain aspect ratio */
+  }
+}
+.h22{
+  text-align: center; /* Center text */
+  align-items: center; /* Center horizontally */
+  justify-content: center;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
 }
