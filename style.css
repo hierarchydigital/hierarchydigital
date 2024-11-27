@@ -24,6 +24,7 @@
     background-position: center;
     text-align: left;
     margin-top: 50px;
+    
     }
 
 /* Adjust header to allow blur effect */
@@ -564,7 +565,7 @@ color: #ffffff;
 @media (min-width: 1024px) {
   .graphic-card {
     width: 300px; /* Set a fixed width */
-    height: 400px; /* Set a fixed height */
+    height: 500px; /* Set a fixed height */
     background: #1A1A1A00; /* Background color for visual appeal */
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
