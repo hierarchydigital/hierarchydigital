@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Code Editor | By Hierarchy Digital</title>
+    <link rel="icon" href="images/whitelogo.png">
+    <script type="module" src="firebaseConfig.js"></script>
+    <script type="module" src="auth.js" defer></script>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        body {
+        font-family: 'Jost', sans-serif;
+        background: rgba(31, 92, 150, 0.8);
+        }
+
+        #login-container {
+          background-color:  rgba(33, 72, 109, 0.8);
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: 320px; /* Limit max width for better viewing */
+            text-align: center; /* Center text inside the div */
+            margin: auto;
+            margin-top: 150px;
+            margin-bottom: 250px;
+        }
+
+        #login-container h2 {
+            color: #fff; /* Ensure header text is white */
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        #login-container p {
+            margin: 10px 0;
+            color: rgba(255, 255, 255, 0.7); /* Light color for secondary text */
+        }
+
+        #login-container input[type="text"],
+        #login-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        #login-container input[type="text"]::placeholder,
+        #login-container input[type="password"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #login-container button {
+            width: 100%; /* Make the button full width */
+            padding: 12px; /* Add padding for better touch target */
+            border: none; /* Remove default border */
+            border-radius: 25px; /* Rounded corners */
+            background: rgba(0, 44, 90, 0.9); 
+            color: #fff; /* White text color */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background 0.3s; /* Smooth background color transition */
+        }
+
+        #login-container button:hover {
+          background: rgba(0, 50, 97, 0.8);/* Background color with transparency */
+        }
+
+        #login-container button:focus {
+            outline: none; /* Remove outline on focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow */
+        }
+
+        #login-error {
+            color: red;
+            display: none; 
+        }
+
+        .oo {
+            width: 100px; /* Set the width to 60 pixels */
+            margin-bottom: 15px; /* Space between logo and heading */
+        }
+
+        .sign-in-link {
+            display: block;
+            margin-top: 10px;
+            color: rgba(3, 31, 56, 0.8);
+            text-decoration: none; /* Remove underline */
+        }
+
+        .sign-in-link:hover {
+            text-decoration: none; /* Add underline on hover */
+            color: rgba(0, 50, 97, 0.8);
+        }
+
+        .additional-links {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .hero-section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+        margin-top: -150px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background: rgba(31, 92, 150, 0.8); /* Slight transparency */
+        backdrop-filter: blur(10px); /* Apply blur effect */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        margin: auto;
+        z-index: 1000;
+        top: 4px;
+        border-radius: 40px;
+        transition: backdrop-filter 0.3s ease, background 0.3s ease;
+      }
+
+      h1 {
+        color: rgb(255, 255, 255);
+        align-items: center;
+        position: relative;
+        margin-top: 100px;
+        margin-left: 12px;
+      }
+
+      .header .logo img {
+        height: 50px;
+        width: auto;
+      }
+
+      .dashboard-container {
+        margin: 80px auto; /* Add spacing for fixed header */
+        padding: 20px;
+        max-width: 90%;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        table-layout: auto;
+        margin-bottom: 20px;
+        border-radius: 25px;
+        border-color: #fff;
+      }
+
+      table, th, td {
+        border: 1px solid #ddd;
+      }
+
+      th, td {
+        padding: 12px;
+        text-align: left;
+        color: #fff;
+      }
+
+      th {
+        background-color: rgba(31, 92, 150, 0.8);
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: rgba(200, 230, 250, 0.5);
+      }
+
+      tr:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Added responsive scroll for small screens */
+      @media (max-width: 768px) {
+        .dashboard-container {
+          padding: 10px;
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+          white-space: nowrap;
+        }
+
+        th, td {
+          min-width: 100px; /* Adjust as needed */
+        }
+      }
+      
+      .cta-button {
+        margin-top: 20px;
+        background-color: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+        padding: 12px 24px;
+        text-decoration: none;
+        font-size: 1em;
+        border-radius: 50px; /* Pill-shaped */
+        transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        background-color: white;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <img class="oo" src="images/logo.png" alt="Your Logo"> <!-- Replace with your logo URL -->
+        <h2>Welcome Back User</h2>
+        <form id="login-form">
+            <input type="text" id="email" placeholder="Email" required />
+            <input type="password" id="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+        </form>
+        <p id="login-error"></p>
+    </div>
+    
+    <div id="content-container" style="display:none;">
+      <header class="header">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Hierarchy Digital Logo" class="logo">
+            </a>
+        </div>
+        <nav id="menu">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-btn">Services</a>
+                <div class="dropdown-content">
+                    <a href="websites.html">Web Design</a>
+                    <a href="graphic-design.html">Graphic Design</a>
+                    <a href="branding.html">Comapny Branding</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-btn">Pricing</a>
+                <div class="dropdown-content">
+                    <a href="website-pricing.html">Websites</a>
+                    <a href="design-pricing.html">Graphics</a>
+                    <a href="branding-pricing.html">Branding</a>
+                </div>
+            </div>
+            <a href="quote.html">Get Quote</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+          <h1>Hierarchy Quotes Dashboard</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Service</th>
+                <th>Country Code</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Currency</th>
+                <th>Message</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="data-table">
+              <!-- Data will be inserted here dynamically -->
+            </tbody>
+          </table>
+          <footer class="footer">
+            <div class="footer-section">
+                <img src="images/logo.png" alt="Image 1">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="websites.html">Web Design</a></li>
+                    <li><a href="graphic-design.html">Graphic Design</a></li>
+                    <li><a href="branding.html">Branding</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Email: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+                    <li>Careers: <a href="mailto:hierarchydigital@gmail.com">info@hierarchydigital.site​</a></li>
+                
+                </ul>
+            </div>
+          
+            <div class="footer-section">
+                <h3>Privacy Policy</h3>
+                <p>Your privacy is important to us. Read our <a href="privacypolicy.html">Privacy Policy</a>.</p>
+          
+                <h4>Terms of Service</h4>
+                <p>By using our services, you agree to our <a href="termsofservice.html">Terms of Service</a>.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="scr.js"></script>
+    <script type="module">
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { db } from './firebaseConfig.js';
+    import { collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const auth = getAuth();
+    const loginContainer = document.getElementById('login-container');
+    const contentContainer = document.getElementById('content-container');
+    const loginError = document.getElementById('login-error');
+
+    // Initially show the login container
+    loginContainer.style.display = 'block';
+    contentContainer.style.display = 'none';
+
+    // Handle form submission
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            // On successful login
+            loginContainer.style.display = 'none';
+            contentContainer.style.display = 'block';
+        } catch (error) {
+            loginError.textContent = error.message;
+            loginError.style.display = 'block';
+            console.error('Login error:', error.message); // Log the error message
+        }
+    });
+
+    // Function to save project
+    async function saveProject() {
+        const user = auth.currentUser; // Get the currently authenticated user
+        if (user) {
+            const userId = user.uid; // Get the user's ID
+            const projectCollection = collection(db, 'users', userId, 'projects'); // Reference to the projects subcollection
+
+            // Get the content from the editor
+            const htmlContent = document.getElementById('html').value;
+            const cssContent = document.getElementById('css').value;
+            const jsContent = document.getElementById('js').value;
+
+            try {
+                // Add a new project document with the editor's content
+                await addDoc(projectCollection, {
+                    html: htmlContent,
+                    css: cssContent,
+                    js: jsContent,
+                    createdAt: serverTimestamp() // Automatically set the creation time
+                });
+                alert('Project saved successfully!');
+            } catch (error) {
+                console.error('Error saving project:', error);
+                alert('Failed to save project. Please try again.');
+            }
+        } else {
+            alert('You must be logged in to save projects.');
+        }
+    }
+
+    // Function to load projects
+    async function loadProjects() {
+        const user = auth.currentUser;
+        if (user) {
+            const userId = user.uid;
+            const projectCollection = collection(db, 'users', userId, 'projects');
+
+            try {
+                const querySnapshot = await getDocs(projectCollection);
+                querySnapshot.forEach((doc) => {
+                    const projectData = doc.data();
+                    console.log(`${doc.id} =>`, projectData); // Log project data
+                });
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        } else {
+            alert('You must be logged in to load projects.');
+        }
+    }
+
+    // Call this function to update the iframe preview
+    function updatePreview() {
+        const htmlContent = document.getElementById('html').value;
+        const cssContent = document.getElementById('css').value;
+        const jsContent = document.getElementById('js').value;
+
+        const iframe = document.getElementById('preview-frame');
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+        // Write HTML content
+        iframeDoc.open();
+        iframeDoc.write(htmlContent + '<style>' + cssContent + '</style>' + '<script>' + jsContent + '<\/script>');
+        iframeDoc.close();
+    }
+
+    // Event listeners to update the preview on input change
+    document.getElementById('html').addEventListener('input', updatePreview);
+    document.getElementById('css').addEventListener('input', updatePreview);
+    document.getElementById('js').addEventListener('input', updatePreview);
+
+
+    </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDH80UMeSwoWtjsd1rGp-zI2hP3E8IP4hk",
+      authDomain: "quote-a21d3.firebaseapp.com",
+      projectId: "quote-a21d3",
+      storageBucket: "quote-a21d3.appspot.com",
+      messagingSenderId: "118114512498",
+      appId: "1:118114512498:web:dc8763d6c29d3504575ceb"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // Initialize Firestore
+    const db = getFirestore(app);
+
+    // Fetch data from Firestore
+    async function fetchData() {
+      const tableBody = document.getElementById("data-table");
+      const querySnapshot = await getDocs(collection(db, "quotes"));
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+
+        // Create table rows dynamically
+        const row = `
+          <tr>
+            <td>${data.name}</td>
+            <td>${data.company}</td>
+            <td>${data.service}</td>
+            <td>${data.countryCode}</td>
+            <td>${data.phone}</td>
+            <td>${data.email}</td>
+            <td>${data.currency}</td>
+            <td>${data.message}</td>
+            <td>${new Date(data.timestamp?.seconds * 1000).toLocaleString()}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    fetchData().catch((error) => console.error("Error fetching data: ", error));
+  </script>
+      <script>
+        function toggleMenu() {
+          const menu = document.getElementById('menu');
+          menu.classList.toggle('open');
+        }
+      </script>
+</body>
+</html>
