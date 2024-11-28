@@ -333,7 +333,17 @@
     justify-content: center;
     height: 92%;
   }
-
+  .graphic-cards {
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 20px; 
+    padding: 1rem; 
+    padding-top: 0.1rem;
+    padding-bottom: 4rem;
+    text-align: center;
+    align-items: center; 
+    justify-content: center;
+    height: 92%;
+  }
   .graphic-work h2 {
     border-radius: 10px; 
     padding: 2.5rem; 
@@ -430,7 +440,7 @@
     cursor: pointer;
     display: inline-block;
     margin-bottom: 40px;
-    margin-left: 30%;
+    margin-left: 29%;
   }
 
   .footer img{
