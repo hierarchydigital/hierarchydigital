@@ -309,7 +309,7 @@
   .graphic-work {
     margin: 2rem 0; 
     font-size: 1.3rem;
-    margin-top: 100px;
+    margin-top: 110px !important;
   }
 
   .graphic-grid {
