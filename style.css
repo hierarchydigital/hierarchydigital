@@ -88,7 +88,14 @@
     cursor: pointer;
   }
   
- 
+  .pricing-box{
+    border-radius: 30px !important;
+  }
+  .contact-container {
+    border-radius: 30px !important;
+    margin-top: 160px;
+}
+
   .her-section {
     display: flex;
     justify-content: center;
@@ -97,7 +104,12 @@
     text-align: center;
     background-size: cover;
     background-position: center;
-    margin-top: 8%;
+    margin-top: 100px;
+    background: rgba(31, 92, 150, 0.8); /* Slight transparency */
+    border-radius: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
   }
 
   .her-content {
@@ -481,6 +493,9 @@
 
 
  @media (max-width: 768px) {
+  .contact-container {
+    margin-top: 100px !important;
+}
   .meet-our-team {
     padding: 50px 20px;
     color: white;
@@ -670,6 +685,10 @@
 }
 
 @media (min-width: 1024px) {
+  .graphic-card {
+    padding: 1px;
+    height: 35vh !important;
+}
   .footer{
     padding-left: 45px;
     padding-right: 40px;
@@ -684,8 +703,7 @@
     margin-top: -200px;
   }
   .graphic-card {
-    width: 300px; 
-    height: 600px; 
+    width: 100% !important; 
     background: #1A1A1A00; 
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -693,7 +711,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
     text-align: center;
     margin: 10px; 
   }
